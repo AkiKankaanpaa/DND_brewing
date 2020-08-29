@@ -1,0 +1,62 @@
+[	
+	{
+	"Effect": "Strong Flavor",
+	"Additional": ""
+	},
+	{
+	"Effect": "Strong Odor",
+	"Additional": ""
+	},
+	{
+	"Effect": "Odorless",
+	"Additional": ""
+	},
+	{
+	"Effect": "Bland",
+	"Additional": ""
+	},
+	{
+	"Effect": "Contact",
+	"Additional": ""
+	},
+	{
+	"Effect": "Purifying",
+	"Additional": ""
+	},
+	{
+	"Effect": "Reflective",
+	"Additional": ""
+	},
+	{
+	"Effect": "Infusing",
+	"Additional": ""
+	},
+	{
+	"Effect": "Hazardous",
+	"Additional": "Acid (Dexterity), Bludgeoning (Constitution), Cold (Dexterity), Fire (Dexterity), Force (Intelligence), Lightning (Constitution), Necrotic (Constitution), Piercing (Dexterity), Poison (Constitution), Psychic (Wisdom), Radiant (Constitution), Slashing (Dexterity), Thunder (Constitution)"
+	},
+	{
+	"Effect": "Infusing",
+	"Additional": ""
+	},
+	{
+	"Effect": "Phasing",
+	"Additional": ""
+	},
+	{
+	"Effect": "Freezing",
+	"Additional": ""
+	},
+	{
+	"Effect": "Glowing",
+	"Additional": "5 ft, 10 ft, 15 ft, 20 ft, 25 ft, 30 ft"
+	},
+	{
+	"Effect": "Lingering",
+	"Additional": ""
+	},
+	{
+	"Effect": "Staining",
+	"Additional": "Blood Red, Dark Red, Muddy Yellow, Bright Yellow, Swamp Green, Bright Green, Purple, Light Violet, Hazy Grey, Teal, Dark Blue, Black, White, Orange"
+	}
+]

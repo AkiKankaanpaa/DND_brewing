@@ -1,0 +1,431 @@
+[{
+		"Name": "arachnid fern",
+		"Final Form": "Powder, Liquid",
+		"DC": "16",
+		"Damage": "0",
+		"Time": "1d4",
+		"Unit": "Minutes",
+		"Effects": "Paralyzing",
+		"Attributes": "Odorless"
+	},
+	{
+		"Name": "ambrosia",
+		"Final Form": "Paste",
+		"DC": "24",
+		"Damage": "1d20",
+		"Time": "0",
+		"Unit": "Infinite",
+		"Effects": "Rekindling, Purifying",
+		"Attributes": "Infusing, Strong Flavor, Strong Odor"
+	},
+	{
+		"Name": "arctic bite",
+		"Final Form": "Paste",
+		"DC": "12",
+		"Damage": "2d8",
+		"Time": "1d6",
+		"Unit": "Minutes",
+		"Effects": "Poison (Cold)",
+		"Attributes": "Freezing"
+	},
+	{
+		"Name": "assassin's vine",
+		"Final Form": "Liquid",
+		"DC": "16",
+		"Damage": "6d6",
+		"Time": "1d6",
+		"Unit": "Rounds",
+		"Effects": "Poison (Poison)",
+		"Attributes": "Strong Flavor, Strong Odor"
+	},
+	{
+		"Name": "azure snowdrop",
+		"Final Form": "Liquid",
+		"DC": "12",
+		"Damage": "1d10",
+		"Time": "0",
+		"Unit": "0",
+		"Effects": "Healing",
+		"Attributes": "Purifying"
+	},
+	{
+		"Name": "bittercress seed",
+		"Final Form": "Liquid, Powder, Solid",
+		"DC": "14",
+		"Damage": "4d4",
+		"Time": "1d4",
+		"Unit": "Hours",
+		"Effects": "",
+		"Attributes": "Odorless, Purifying"
+	},
+	{
+		"Name": "blisterthyme",
+		"Final Form": "Paste, Liquid",
+		"DC": "12",
+		"Damage": "2d12",
+		"Time": "2",
+		"Unit": "Hours",
+		"Effects": "Poison (Acid)",
+		"Attributes": "Contact"
+	},
+	{
+		"Name": "bloomberry",
+		"Final Form": "Liquid, Solid",
+		"DC": "0",
+		"Damage": "2d12",
+		"Time": "1d8",
+		"Unit": "Minutes",
+		"Effects": "Healing, Resistant (Poison)",
+		"Attributes": "Reflective"
+	},
+	{
+		"Name": "brineweed",
+		"Final Form": "Liquid, Paste, Powder",
+		"DC": "0",
+		"Damage": "1d4",
+		"Time": "0",
+		"Unit": "0",
+		"Effects": "Poison (Acid)",
+		"Attributes": "Contact"
+	},
+	{
+		"Name": "bubble lily",
+		"Final Form": "Liquid, Powder",
+		"DC": "0",
+		"Damage": "1d8",
+		"Time": "3",
+		"Unit": "Rounds",
+		"Effects": "Healing, Resistant (Poison)",
+		"Attributes": "Contact"
+	},
+	{
+		"Name": "cinderpetal",
+		"Final Form": "Liquid, Paste",
+		"DC": "16",
+		"Damage": "3d8",
+		"Time": "0",
+		"Unit": "0",
+		"Effects": "Endangering (Fire)",
+		"Attributes": "Incendiary"
+	},
+	{
+		"Name": "claymore mushroom",
+		"Final Form": "Powder, Solid",
+		"DC": "10",
+		"Damage": "2d6",
+		"Time": "1d6",
+		"Unit": "Rounds",
+		"Effects": "Hazardous (Blinding)",
+		"Attributes": "Odorless"
+	},
+	{
+		"Name": "dewberry",
+		"Final Form": "Liquid, Paste, Gas",
+		"DC": "0",
+		"Damage": "0",
+		"Time": "0",
+		"Unit": "0",
+		"Effects": "",
+		"Attributes": "Purifying, Reforming (Liquid)"
+	},
+	{
+		"Name": "doomberry",
+		"Final Form": "Liquid, Gas",
+		"DC": "14",
+		"Damage": "2d6",
+		"Time": "1",
+		"Unit": "Hours",
+		"Effects": "Poison (Poison), Diminishing (Constitution)",
+		"Attributes": ""
+	},
+	{
+		"Name": "dragon's breath",
+		"Final Form": "Liquid",
+		"DC": "0",
+		"Damage": "0",
+		"Time": "0",
+		"Unit": "Infinite",
+		"Effects": "Cleansing (3 times), Transformative (Draconic)",
+		"Attributes": ""
+	},
+	{
+		"Name": "emperor's ivy",
+		"Final Form": "Powder, Liquid",
+		"DC": "16",
+		"Damage": "1d12",
+		"Time": "1d4",
+		"Unit": "Weeks",
+		"Effects": "Poison (Acid), Toxic",
+		"Attributes": "Strong Flavor, Contact"
+	},
+	{
+		"Name": "foulfume daffodil",
+		"Final Form": "Powder, Liquid, Gas, Paste",
+		"DC": "16",
+		"Damage": "1d10",
+		"Time": "4",
+		"Unit": "Hours",
+		"Effects": "Poison (Psychic), Imbued (Confusion)",
+		"Attributes": "Infusing"
+	},
+	{
+		"Name": "frostvine",
+		"Final Form": "Solid, Paste",
+		"DC": "12",
+		"Damage": "4d4",
+		"Time": "0",
+		"Unit": "0",
+		"Effects": "Poison (Cold)",
+		"Attributes": "Freezing, Hazardous (Cold)"
+	},
+	{
+		"Name": "glowspore",
+		"Final Form": "Powder, Liquid",
+		"DC": "10",
+		"Damage": "1d6",
+		"Time": "1d10",
+		"Unit": "Minutes",
+		"Effects": "Paralyzing",
+		"Attributes": "Glowing (5 ft)"
+	},
+	{
+		"Name": "hearthroot",
+		"Final Form": "Solid, Paste, Powder",
+		"DC": "0",
+		"Damage": "0",
+		"Time": "0",
+		"Unit": "0",
+		"Effects": "Cleansing",
+		"Attributes": ""
+	},
+	{
+		"Name": "hemodye",
+		"Final Form": "Powder, Paste, Liquid",
+		"DC": "0",
+		"Damage": "0",
+		"Time": "1d4",
+		"Unit": "Months",
+		"Effects": "Endangering (Necrotic), Imbued (Confusion)",
+		"Attributes": "Staining (Crimson Red)"
+	},
+	{
+		"Name": "hog's leek",
+		"Final Form": "Liquid, Paste",
+		"DC": "10",
+		"Damage": "0",
+		"Time": "1d6",
+		"Unit": "Minutes",
+		"Effects": "Healing, Resistant (Fire)",
+		"Attributes": "Infusing, Odorless"
+	},
+	{
+		"Name": "huckleberry",
+		"Final Form": "Liquid, Gas",
+		"DC": "0",
+		"Damage": "1d8",
+		"Time": "1d4",
+		"Unit": "Hours",
+		"Effects": "Resistant (Poison), Resistant (Acid)",
+		"Attributes": "Phasing"
+	},
+	{
+		"Name": "kelp",
+		"Final Form": "Solid, Paste, Powder",
+		"DC": "8",
+		"Damage": "0",
+		"Time": "1d8",
+		"Unit": "Rounds",
+		"Effects": "",
+		"Attributes": "Odorless"
+	},
+	{
+		"Name": "king's lace",
+		"Final Form": "Liquid",
+		"DC": "0",
+		"Damage": "3d10",
+		"Time": "1",
+		"Unit": "Days",
+		"Effects": "Healing, Cleansing",
+		"Attributes": "Purifying"
+	},
+	{
+		"Name": "lakeleaf",
+		"Final Form": "Liquid, Paste, Solid",
+		"DC": "12",
+		"Damage": "0",
+		"Time": "0",
+		"Unit": "0",
+		"Effects": "Cleansing",
+		"Attributes": "Odorless"
+	},
+	{
+		"Name": "light's shade",
+		"Final Form": "Paste, Powder",
+		"DC": "0",
+		"Damage": "1d8",
+		"Time": "1d4",
+		"Unit": "Hours",
+		"Effects": "Transformative (Invisible)",
+		"Attributes": ""
+	},
+	{
+		"Name": "lunar hibiscus",
+		"Final Form": "Paste, Powder",
+		"DC": "10",
+		"Damage": "1d12",
+		"Time": "10",
+		"Unit": "Minutes",
+		"Effects": "Transformative (Magically Invisible)",
+		"Attributes": "Staining (Black), Reflective"
+	},
+	{
+		"Name": "mirage orchid",
+		"Final Form": "Liquid, Solid",
+		"DC": "12",
+		"Damage": "1d8",
+		"Time": "1d6",
+		"Unit": "Rounds",
+		"Effects": "Imbued (Mirror Image)",
+		"Attributes": "Phasing"
+	},
+	{
+		"Name": "ragleaf",
+		"Final Form": "Liquid, Solid",
+		"DC": "0",
+		"Damage": "1d8",
+		"Time": "1d10",
+		"Unit": "Minutes",
+		"Effects": "Resistant (Fire), Resistant (Cold)",
+		"Attributes": "Infusing"
+	},
+	{
+		"Name": "ranak's huskrose",
+		"Final Form": "Paste",
+		"DC": "16",
+		"Damage": "3d6",
+		"Time": "1d4",
+		"Unit": "Minutes",
+		"Effects": "Transformative (Perception Ad. and Exp.), Poison (Acid), Diminishing (Strength)",
+		"Attributes": "Strong Flavor, Strong Odor"
+	},
+	{
+		"Name": "rattlemoss",
+		"Final Form": "Liquid, Paste",
+		"DC": "0",
+		"Damage": "3d12",
+		"Time": "0",
+		"Unit": "0",
+		"Effects": "Toxic, Poison (Poison)",
+		"Attributes": "Bland, Odorless, Infusing"
+	},
+	{
+		"Name": "rorork seed",
+		"Final Form": "Liquid, Gas, Solid",
+		"DC": "16",
+		"Damage": "2d8",
+		"Time": "3",
+		"Unit": "Rounds",
+		"Effects": "Paralyzing",
+		"Attributes": "Phasing"
+	},
+	{
+		"Name": "sage ivy",
+		"Final Form": "Liquid, Paste",
+		"DC": "16",
+		"Damage": "1d10",
+		"Time": "1",
+		"Unit": "Hours",
+		"Effects": "Zone of Truth",
+		"Attributes": ""
+	},
+	{
+		"Name": "scorchroot",
+		"Final Form": "Powder, Solid",
+		"DC": "12",
+		"Damage": "3d6",
+		"Time": "0",
+		"Unit": "0",
+		"Effects": "Poison (Fire)",
+		"Attributes": "Hazardous (Fire)"
+	},
+	{
+		"Name": "smuggler's root",
+		"Final Form": "Powder, Liquid, Paste",
+		"DC": "16",
+		"Damage": "2d8",
+		"Time": "1d6",
+		"Unit": "Hours",
+		"Effects": "Imbued (Confusion), Naarcoleptic, Poison (Psychic)",
+		"Attributes": "Lingering"
+	},
+	{
+		"Name": "spinespore",
+		"Final Form": "Powder, Liquid",
+		"DC": "14",
+		"Damage": "0",
+		"Time": "1",
+		"Unit": "Days",
+		"Effects": "Imbued (Confusion)",
+		"Attributes": "Lingering"
+	},
+	{
+		"Name": "thousand-eyed sunbloom",
+		"Final Form": "Paste, Liquid, Powder",
+		"DC": "0",
+		"Damage": "0",
+		"Time": "1d12",
+		"Unit": "Minutes",
+		"Effects": "",
+		"Attributes": "Purifying, Reminiscing (Muddy Yellow)"
+	},
+	{
+		"Name": "tang tulip",
+		"Final Form": "Paste, Liquid, Powder",
+		"DC": "0",
+		"Damage": "0",
+		"Time": "1d6",
+		"Unit": "Hours",
+		"Effects": "",
+		"Attributes": "Reformative (Paste), Contact, Hazardous (Restraining)"
+	},
+	{
+		"Name": "touch-me-not bark",
+		"Final Form": "Liquid, Powder",
+		"DC": "18",
+		"Damage": "1d10",
+		"Time": "1d12",
+		"Unit": "Rounds",
+		"Effects": "Poison (Poison), Diminishing (Strength)",
+		"Attributes": "Contact"
+	},
+	{
+		"Name": "weeping nettle",
+		"Final Form": "Liquid, Gas, Solid",
+		"DC": "10",
+		"Damage": "1d8",
+		"Time": "1d4",
+		"Unit": "Hours",
+		"Effects": "Cleansing",
+		"Attributes": "Purifying"
+	},
+	{
+		"Name": "woundwurt",
+		"Final Form": "Powder, Liquid",
+		"DC": "14",
+		"Damage": "4d6",
+		"Time": "1d4",
+		"Unit": "Minutes",
+		"Effects": "Toxic",
+		"Attributes": "Strong Flavor"
+	},
+	{
+		"Name": "zinc shroom",
+		"Final Form": "Powder, Paste",
+		"DC": "0",
+		"Damage": "0",
+		"Time": "1d4",
+		"Unit": "Minutes",
+		"Effects": "Ageless (1d4 Months: Solid or Paste)",
+		"Attributes": "Strong Flavor"
+	}
+]
