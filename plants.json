@@ -6,7 +6,9 @@
 		"Time": "1d4",
 		"Unit": "Minutes",
 		"Effects": "Paralyzing",
-		"Attributes": "Odorless"
+		"Attributes": "Odorless",
+		"Biomes": "Jungles",
+		"Rarity": "Rare"
 	},
 	{
 		"Name": "ambrosia",
@@ -16,7 +18,9 @@
 		"Time": "0",
 		"Unit": "Infinite",
 		"Effects": "Rekindling, Purifying",
-		"Attributes": "Infusing, Strong Flavor, Strong Odor"
+		"Attributes": "Infusing, Strong Flavor, Strong Odor",
+		"Biomes": "All",
+		"Rarity": "Myth"
 	},
 	{
 		"Name": "arctic bite",
@@ -26,7 +30,9 @@
 		"Time": "1d6",
 		"Unit": "Minutes",
 		"Effects": "Poison (Cold)",
-		"Attributes": "Freezing"
+		"Attributes": "Freezing",
+		"Biomes": "Arctic",
+		"Rarity": "Uncommon"
 	},
 	{
 		"Name": "assassin's vine",
@@ -36,7 +42,9 @@
 		"Time": "1d6",
 		"Unit": "Rounds",
 		"Effects": "Poison (Poison)",
-		"Attributes": "Strong Flavor, Strong Odor"
+		"Attributes": "Strong Flavor, Strong Odor",
+		"Biomes": "Jungles",
+		"Rarity": "Uncommon"
 	},
 	{
 		"Name": "azure snowdrop",
@@ -46,7 +54,9 @@
 		"Time": "0",
 		"Unit": "0",
 		"Effects": "Healing",
-		"Attributes": "Purifying"
+		"Attributes": "Purifying",
+		"Biomes": "Arctic",
+		"Rarity": "Very Rare"
 	},
 	{
 		"Name": "bittercress seed",
@@ -56,7 +66,9 @@
 		"Time": "1d4",
 		"Unit": "Hours",
 		"Effects": "",
-		"Attributes": "Odorless, Purifying"
+		"Attributes": "Odorless, Purifying",
+		"Biomes": "Coastal, Lakes",
+		"Rarity": "Uncommon"
 	},
 	{
 		"Name": "blisterthyme",
@@ -66,7 +78,9 @@
 		"Time": "2",
 		"Unit": "Hours",
 		"Effects": "Poison (Acid)",
-		"Attributes": "Contact"
+		"Attributes": "Contact",
+		"Biomes": "Forests, Hills",
+		"Rarity": "Common"
 	},
 	{
 		"Name": "bloomberry",
@@ -76,7 +90,9 @@
 		"Time": "1d8",
 		"Unit": "Minutes",
 		"Effects": "Healing, Resistant (Poison)",
-		"Attributes": "Reflective"
+		"Attributes": "Reflective",
+		"Biomes": "Coastal, Forests",
+		"Rarity": "Common"
 	},
 	{
 		"Name": "brineweed",
@@ -86,7 +102,9 @@
 		"Time": "0",
 		"Unit": "0",
 		"Effects": "Poison (Acid)",
-		"Attributes": "Contact"
+		"Attributes": "Contact",
+		"Biomes": "Lakes, Plains",
+		"Rarity": "Common"
 	},
 	{
 		"Name": "bubble lily",
@@ -96,7 +114,9 @@
 		"Time": "3",
 		"Unit": "Rounds",
 		"Effects": "Healing, Resistant (Poison)",
-		"Attributes": "Contact"
+		"Attributes": "Contact",
+		"Biomes": "Coastal, Forests, Lakes",
+		"Rarity": "Uncommon"
 	},
 	{
 		"Name": "cinderpetal",
@@ -106,7 +126,9 @@
 		"Time": "0",
 		"Unit": "0",
 		"Effects": "Endangering (Fire)",
-		"Attributes": "Incendiary"
+		"Attributes": "Incendiary",
+		"Biomes": "Forests",
+		"Rarity": "Rare"
 	},
 	{
 		"Name": "claymore mushroom",
@@ -116,7 +138,9 @@
 		"Time": "1d6",
 		"Unit": "Rounds",
 		"Effects": "Hazardous (Blinding)",
-		"Attributes": "Odorless"
+		"Attributes": "Odorless",
+		"Biomes": "Forests, Swamps",
+		"Rarity": "Uncommon"
 	},
 	{
 		"Name": "dewberry",
@@ -126,7 +150,9 @@
 		"Time": "0",
 		"Unit": "0",
 		"Effects": "",
-		"Attributes": "Purifying, Reforming (Liquid)"
+		"Attributes": "Purifying, Reforming (Liquid)",
+		"Biomes": "Forests",
+		"Rarity": "Common"
 	},
 	{
 		"Name": "doomberry",
@@ -136,7 +162,9 @@
 		"Time": "1",
 		"Unit": "Hours",
 		"Effects": "Poison (Poison), Diminishing (Constitution)",
-		"Attributes": ""
+		"Attributes": "",
+		"Biomes": "Coasts, Forests",
+		"Rarity": "Uncommon"
 	},
 	{
 		"Name": "dragon's breath",
@@ -146,7 +174,9 @@
 		"Time": "0",
 		"Unit": "Infinite",
 		"Effects": "Cleansing (3 times), Transformative (Draconic)",
-		"Attributes": ""
+		"Attributes": "",
+		"Biomes": "Mountain Peaks",
+		"Rarity": "Myth"
 	},
 	{
 		"Name": "emperor's ivy",
@@ -156,7 +186,9 @@
 		"Time": "1d4",
 		"Unit": "Weeks",
 		"Effects": "Poison (Acid), Toxic",
-		"Attributes": "Strong Flavor, Contact"
+		"Attributes": "Strong Flavor, Contact",
+		"Biomes": "Coastal, Ocean",
+		"Rarity": "Very Rare"
 	},
 	{
 		"Name": "foulfume daffodil",
@@ -166,7 +198,9 @@
 		"Time": "4",
 		"Unit": "Hours",
 		"Effects": "Poison (Psychic), Imbued (Confusion)",
-		"Attributes": "Infusing"
+		"Attributes": "Infusing",
+		"Biomes": "Swamps",
+		"Rarity": "Rare"
 	},
 	{
 		"Name": "frostvine",
@@ -176,7 +210,9 @@
 		"Time": "0",
 		"Unit": "0",
 		"Effects": "Poison (Cold)",
-		"Attributes": "Freezing, Hazardous (Cold)"
+		"Attributes": "Freezing, Hazardous (Cold)",
+		"Biomes": "Arctic",
+		"Rarity": "Common"
 	},
 	{
 		"Name": "glowspore",
@@ -186,7 +222,9 @@
 		"Time": "1d10",
 		"Unit": "Minutes",
 		"Effects": "Paralyzing",
-		"Attributes": "Glowing (5 ft)"
+		"Attributes": "Glowing (5 ft)",
+		"Biomes": "Forests",
+		"Rarity": "Common"
 	},
 	{
 		"Name": "hearthroot",
@@ -196,7 +234,9 @@
 		"Time": "0",
 		"Unit": "0",
 		"Effects": "Cleansing",
-		"Attributes": ""
+		"Attributes": "",
+		"Biomes": "All",
+		"Rarity": "Common"
 	},
 	{
 		"Name": "hemodye",
@@ -206,7 +246,9 @@
 		"Time": "1d4",
 		"Unit": "Months",
 		"Effects": "Endangering (Necrotic), Imbued (Confusion)",
-		"Attributes": "Staining (Crimson Red)"
+		"Attributes": "Staining (Crimson Red)",
+		"Biomes": "Plains, Swamps",
+		"Rarity": "Rare"
 	},
 	{
 		"Name": "hog's leek",
@@ -216,7 +258,9 @@
 		"Time": "1d6",
 		"Unit": "Minutes",
 		"Effects": "Healing, Resistant (Fire)",
-		"Attributes": "Infusing, Odorless"
+		"Attributes": "Infusing, Odorless",
+		"Biomes": "Lakes",
+		"Rarity": "Uncommon"
 	},
 	{
 		"Name": "huckleberry",
@@ -226,7 +270,9 @@
 		"Time": "1d4",
 		"Unit": "Hours",
 		"Effects": "Resistant (Poison), Resistant (Acid)",
-		"Attributes": "Phasing"
+		"Attributes": "Phasing",
+		"Biomes": "Forests",
+		"Rarity": "Rare"
 	},
 	{
 		"Name": "kelp",
@@ -236,7 +282,9 @@
 		"Time": "1d8",
 		"Unit": "Rounds",
 		"Effects": "",
-		"Attributes": "Odorless"
+		"Attributes": "Odorless",
+		"Biomes": "Ocean",
+		"Rarity": "Common"
 	},
 	{
 		"Name": "king's lace",
@@ -246,7 +294,9 @@
 		"Time": "1",
 		"Unit": "Days",
 		"Effects": "Healing, Cleansing",
-		"Attributes": "Purifying"
+		"Attributes": "Purifying",
+		"Biomes": "Forests",
+		"Rarity": "Very Rare"
 	},
 	{
 		"Name": "lakeleaf",
@@ -256,7 +306,9 @@
 		"Time": "0",
 		"Unit": "0",
 		"Effects": "Cleansing",
-		"Attributes": "Odorless"
+		"Attributes": "Odorless",
+		"Biomes": "Lakes",
+		"Rarity": "Uncommon"
 	},
 	{
 		"Name": "light's shade",
@@ -266,7 +318,9 @@
 		"Time": "1d4",
 		"Unit": "Hours",
 		"Effects": "Transformative (Invisible)",
-		"Attributes": ""
+		"Attributes": "",
+		"Biomes": "Hills",
+		"Rarity": "Rare"
 	},
 	{
 		"Name": "lunar hibiscus",
@@ -276,7 +330,9 @@
 		"Time": "10",
 		"Unit": "Minutes",
 		"Effects": "Transformative (Magically Invisible)",
-		"Attributes": "Staining (Black), Reflective"
+		"Attributes": "Staining (Black), Reflective",
+		"Biomes": "Forests",
+		"Rarity": "Very Rare"
 	},
 	{
 		"Name": "mirage orchid",
@@ -286,7 +342,9 @@
 		"Time": "1d6",
 		"Unit": "Rounds",
 		"Effects": "Imbued (Mirror Image)",
-		"Attributes": "Phasing"
+		"Attributes": "Phasing",
+		"Biomes": "Coastal, Forests",
+		"Rarity": "Rare"
 	},
 	{
 		"Name": "ragleaf",
@@ -296,7 +354,9 @@
 		"Time": "1d10",
 		"Unit": "Minutes",
 		"Effects": "Resistant (Fire), Resistant (Cold)",
-		"Attributes": "Infusing"
+		"Attributes": "Infusing",
+		"Biomes": "All",
+		"Rarity": "Common"
 	},
 	{
 		"Name": "ranak's huskrose",
@@ -306,7 +366,9 @@
 		"Time": "1d4",
 		"Unit": "Minutes",
 		"Effects": "Transformative (Perception Ad. and Exp.), Poison (Acid), Diminishing (Strength)",
-		"Attributes": "Strong Flavor, Strong Odor"
+		"Attributes": "Strong Flavor, Strong Odor",
+		"Biomes": "Swamps",
+		"Rarity": "Uncommon"
 	},
 	{
 		"Name": "rattlemoss",
@@ -316,7 +378,9 @@
 		"Time": "0",
 		"Unit": "0",
 		"Effects": "Toxic, Poison (Poison)",
-		"Attributes": "Bland, Odorless, Infusing"
+		"Attributes": "Bland, Odorless, Infusing",
+		"Biomes": "Swamps",
+		"Rarity": "Rare"
 	},
 	{
 		"Name": "rorork seed",
@@ -326,7 +390,9 @@
 		"Time": "3",
 		"Unit": "Rounds",
 		"Effects": "Paralyzing",
-		"Attributes": "Phasing"
+		"Attributes": "Phasing",
+		"Biomes": "Deserts",
+		"Rarity": "Rare"
 	},
 	{
 		"Name": "sage ivy",
@@ -336,7 +402,9 @@
 		"Time": "1",
 		"Unit": "Hours",
 		"Effects": "Zone of Truth",
-		"Attributes": ""
+		"Attributes": "",
+		"Biomes": "Lakes",
+		"Rarity": "Rare"
 	},
 	{
 		"Name": "scorchroot",
@@ -346,7 +414,9 @@
 		"Time": "0",
 		"Unit": "0",
 		"Effects": "Poison (Fire)",
-		"Attributes": "Hazardous (Fire)"
+		"Attributes": "Hazardous (Fire)",
+		"Biomes": "Deserts, Volcanic",
+		"Rarity": "Common"
 	},
 	{
 		"Name": "smuggler's root",
@@ -356,7 +426,9 @@
 		"Time": "1d6",
 		"Unit": "Hours",
 		"Effects": "Imbued (Confusion), Naarcoleptic, Poison (Psychic)",
-		"Attributes": "Lingering"
+		"Attributes": "Lingering",
+		"Biomes": "Arctic",
+		"Rarity": "Rare"
 	},
 	{
 		"Name": "spinespore",
@@ -366,7 +438,9 @@
 		"Time": "1",
 		"Unit": "Days",
 		"Effects": "Imbued (Confusion)",
-		"Attributes": "Lingering"
+		"Attributes": "Lingering",
+		"Biomes": "Forests, Hills, Plains",
+		"Rarity": "Common"
 	},
 	{
 		"Name": "thousand-eyed sunbloom",
@@ -376,7 +450,9 @@
 		"Time": "1d12",
 		"Unit": "Minutes",
 		"Effects": "",
-		"Attributes": "Purifying, Reminiscing (Muddy Yellow)"
+		"Attributes": "Purifying, Reminiscing (Muddy Yellow)",
+		"Biomes": "Hills, Plains",
+		"Rarity": "Uncommon"
 	},
 	{
 		"Name": "tang tulip",
@@ -386,7 +462,9 @@
 		"Time": "1d6",
 		"Unit": "Hours",
 		"Effects": "",
-		"Attributes": "Reformative (Paste), Contact, Hazardous (Restraining)"
+		"Attributes": "Reformative (Paste), Contact, Hazardous (Restraining)",
+		"Biomes": "Plains",
+		"Rarity": "Uncommon"
 	},
 	{
 		"Name": "touch-me-not bark",
@@ -396,7 +474,9 @@
 		"Time": "1d12",
 		"Unit": "Rounds",
 		"Effects": "Poison (Poison), Diminishing (Strength)",
-		"Attributes": "Contact"
+		"Attributes": "Contact",
+		"Biomes": "Arctic, Forests",
+		"Rarity": "Uncommon"
 	},
 	{
 		"Name": "weeping nettle",
@@ -406,7 +486,9 @@
 		"Time": "1d4",
 		"Unit": "Hours",
 		"Effects": "Cleansing",
-		"Attributes": "Purifying"
+		"Attributes": "Purifying",
+		"Biomes": "Coasts, Forests",
+		"Rarity": "Uncommon"
 	},
 	{
 		"Name": "woundwurt",
@@ -416,7 +498,9 @@
 		"Time": "1d4",
 		"Unit": "Minutes",
 		"Effects": "Toxic",
-		"Attributes": "Strong Flavor"
+		"Attributes": "Strong Flavor",
+		"Biomes": "Swamps",
+		"Rarity": "Common"
 	},
 	{
 		"Name": "zinc shroom",
@@ -426,6 +510,8 @@
 		"Time": "1d4",
 		"Unit": "Minutes",
 		"Effects": "Ageless (1d4 Months: Solid or Paste)",
-		"Attributes": "Strong Flavor"
+		"Attributes": "Strong Flavor",
+		"Biomes": "All",
+		"Rarity": "Common"
 	}
 ]

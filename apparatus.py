@@ -1,9 +1,14 @@
 from tkinter import *
 import random
 import json
+import string
 
 # Used to determine the time units
 TIME_UNITS = {"0": 0, "Rounds": 1, "Minutes": 2, "Hours": 3, "Days": 4, "Months": 5, "Infinite": 6}
+BIOMES = ["All", "Arctic", "Coastal", "Deserts", "Forests", "Hills", "Jungles", "Lakes", "Mountain Peaks",
+          "Plains", "Ocean", "Swamps", "Volcanic" ]
+RARITIES = ["Common", "Uncommon", "Rare", "Very Rare", "Myth"]
+PORTIONS = [1, 2, 3, 4]
 
 
 class Window:
@@ -19,18 +24,30 @@ class Window:
         self.__attributes = Label(text="", fg="black", bg="sky blue", height=1, width=100)
         self.__crafting_dc = Label(text="", fg="black", bg="powder blue", height=1, width=100)
 
+        self.__biome_variable = StringVar()
+        self.__biome_variable.set(BIOMES[0])
+        self.__biome_option = OptionMenu(self.__window, self.__biome_variable, *BIOMES)
+
+        self.__rarity_variable = StringVar()
+        self.__rarity_variable.set(RARITIES[0])
+        self.__rarity_option = OptionMenu(self.__window, self.__rarity_variable, *RARITIES)
+
         self.__shameless_self_promotionlabel = Label(text="Brought to you by an underpaid intern",
                                                      fg="black", bg="sky blue", height=1, width=42)
+
         self.__shameless_self_promotionlabel2 = Label(text="Version 1.3 Alpha (Form Additions)",
                                                      fg="black", bg="powder blue", height=1, width=42)
+
         self.__shameless_self_promotionlabel3 = Label(text="This is not a finalized version of the product.",
                                                      fg="black", bg="teal", height=1, width=100)
+
         self.__errorlabel = Label(text="", fg="black", bg="sky blue", height=1, width=100)
 
         self.__formvalue = IntVar()
 
-        self.__random_attribute = Label(text="", fg="black", bg="powder blue", height=1, width=42)
-        self.__random_effect = Label(text="", fg="black", bg="powder blue", height=1, width=42)
+        self.__random_attribute = Label(text="", fg="black", bg="sky blue", height=1, width=42)
+        self.__random_effect = Label(text="", fg="black", bg="sky blue", height=1, width=42)
+        self.__random_plant = Label(text="", fg="black", bg="sky blue", height=1, width=42)
 
         self.__formcheck = Checkbutton(text="Show Suitable Bases", variable=self.__formvalue, onvalue=1, offvalue=0)\
             .grid(column=2, row=0, sticky=W)
@@ -61,20 +78,29 @@ class Window:
         self.__attributes.grid(row=5, column=1, sticky=N + W + E + S)
         self.__crafting_dc.grid(row=6, column=1, sticky=N + W + E + S)
         self.__errorlabel.grid(row=7, column=1, sticky=N + W + E + S)
-        self.__shameless_self_promotionlabel3.grid(row=8, column=1, sticky=N + W + E + S)
+
         self.__shameless_self_promotionlabel.grid(row=6, column=0, sticky=N + W + E + S)
         self.__shameless_self_promotionlabel2.grid(row=7, column=0, sticky=N + W + E + S)
-        self.__random_effect.grid(row=5, column=2, sticky=N + W + E + S)
-        self.__random_attribute.grid(row=7, column=2, sticky=N + W + E + S)
+        self.__shameless_self_promotionlabel3.grid(row=8, column=1, sticky=N + W + E + S)
+
+        self.__random_effect.grid(row=6, column=2, sticky=N + W + E + S)
+        self.__random_attribute.grid(row=8, column=2, sticky=N + W + E + S)
+        self.__random_plant.grid(row=4, column=2, sticky=N + W + E + S)
+
+        self.__biome_option.grid(row=1, column=2, sticky=N + W + E + S)
+        self.__rarity_option.grid(row=2, column=2, sticky=N + W + E + S)
 
         Button(self.__window, text="Create Potion", command=self.press_potion, height=1, width=42,
                fg="black", bg="teal").grid(row=8, column=0, sticky=N)
 
-        Button(self.__window, text="Random Attribute", command=self.assign_random_attribute, height=1, width=42,
-               fg="black", bg="teal").grid(row=6, column=2, sticky=N)
-
         Button(self.__window, text="Random Effect", command=self.assign_random_effect, height=1, width=42,
-               fg="black", bg="teal").grid(row=4, column=2, sticky=N)
+               fg="black", bg="teal").grid(row=5, column=2, sticky=N)
+
+        Button(self.__window, text="Random Attribute", command=self.assign_random_attribute, height=1, width=42,
+               fg="black", bg="teal").grid(row=7, column=2, sticky=N)
+
+        Button(self.__window, text="Random Plant", command=self.assign_random_plant, height=1, width=42,
+               fg="black", bg="teal").grid(row=3, column=2, sticky=N)
 
         # Used in calculation of the final crafting DC
         self.__dc_calc = {"Die": 0, "Plant Amount": 0, "Attribute Amount": 0, "Effect Amount": 0}
@@ -307,7 +333,7 @@ class Window:
         random_attribute = random.randint(0, (len(self.__ATTRIBUTES) - 1))
         additional_string = ""
         additional_list = self.__ATTRIBUTES[random_attribute]["Additional"].split(", ")
-        if len(additional_list) > 1:
+        if len(additional_list) > 0:
             random_value = random.randint(0, (len(additional_list) - 1))
             additional_string = " (" + str(additional_list[random_value]) + ")"
         self.__random_attribute.configure(text=str(self.__ATTRIBUTES[random_attribute]["Effect"]) + additional_string)
@@ -316,10 +342,23 @@ class Window:
         random_effect = random.randint(0, (len(self.__EFFECTS) - 1))
         additional_string = ""
         additional_list = self.__EFFECTS[random_effect]["Additional"].split(", ")
-        if len(additional_list) > 1:
+        if len(additional_list) > 0:
             random_value = random.randint(0, (len(additional_list) - 1))
             additional_string = " (" + str(additional_list[random_value]) + ")"
         self.__random_effect.configure(text=str(self.__EFFECTS[random_effect]["Effect"]) + additional_string)
+
+    def assign_random_plant(self):
+        chosen_biome = self.__biome_variable.get()
+        chosen_rarity = self.__rarity_variable.get()
+        plants_in_biome = []
+        for plant in self.__PLANTS:
+            if (plant["Biomes"].split(", ").count(chosen_biome) > 0
+                or plant["Biomes"].split(", ").count("All") > 0 or chosen_biome == "All")\
+                    and (plant["Rarity"] == chosen_rarity):
+                plants_in_biome.append(plant["Name"])
+        randomly_chosen_plant = plants_in_biome[random.randint(0, (len(plants_in_biome) - 1))]
+        random_portion = random.choices(PORTIONS, weights=(10, 6, 3, 1), k=1)
+        self.__random_plant.configure(text=str(string.capwords(randomly_chosen_plant)) + ", " + str(random_portion) + " Portions")
 
 
 def main():
