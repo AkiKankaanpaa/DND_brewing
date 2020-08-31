@@ -464,7 +464,7 @@ class Window:
         if len(additional_list) > 1:
             random_value = random.randint(0, (len(additional_list) - 1))
             additional_string = " (" + str(additional_list[random_value]) + ")"
-            self.__random_attribute.configure\
+        self.__random_attribute.configure\
         (text=str(self.__ATTRIBUTES[random_attribute]["Attribute"]) + additional_string)
 
     def assign_random_effect(self):
