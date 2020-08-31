@@ -5,7 +5,6 @@ import string
 
 # Used to determine the time units
 TIME_UNITS = {"0": 0, "Rounds": 1, "Minutes": 2, "Hours": 3, "Days": 4, "Weeks": 5, "Months": 6, "Infinite": 7}
-
 BIOMES = ["All", "Arctic", "Coastal", "Deserts", "Forests", "Hills", "Jungles", "Lakes", "Mountain Peaks",
           "Plains", "Ocean", "Swamps", "Volcanic"]
 RARITIES = ["Common", "Uncommon", "Rare", "Very Rare", "Myth"]
@@ -33,33 +32,31 @@ class Window:
         self.__biome_variable.set(BIOMES[0])
         self.__biome_option = OptionMenu(self.__window, self.__biome_variable, *BIOMES)
         self.__biome_option.configure(height=1, bg='dark goldenrod', width=15)
-        self.__biome_option.grid(row=0, column=3, sticky=N + W + E + S, columnspan=1)
+        self.__biome_option.grid(row=0, column=1, sticky=N + W + E + S, columnspan=1)
 
         self.__rarity_variable = StringVar()
         self.__rarity_variable.set(RARITIES[0])
         self.__rarity_option = OptionMenu(self.__window, self.__rarity_variable, *RARITIES)
         self.__rarity_option.configure(height=1, bg='dark goldenrod', width=15)
-        self.__rarity_option.grid(row=0, column=4, sticky=N + W + E + S, columnspan=1)
+        self.__rarity_option.grid(row=0, column=2, sticky=N + W + E + S, columnspan=1)
 
         self.__potion_rarity_variable = StringVar()
         self.__potion_rarity_variable.set(RARITIES[0])
         self.__potion_rarity_option = OptionMenu(self.__window, self.__potion_rarity_variable, *RARITIES)
         self.__potion_rarity_option.configure(height=1, bg='dark goldenrod', width=15)
-        self.__potion_rarity_option.grid(row=7, column=4, sticky=N + W + E + S, columnspan=1)
+        self.__potion_rarity_option.grid(row=7, column=2, sticky=N + W + E + S, columnspan=1)
 
         self.__potion_amount_variable = StringVar()
         self.__potion_amount_variable.set(AMOUNTS[0])
         self.__potion_amount_potion = OptionMenu(self.__window, self.__potion_amount_variable, *AMOUNTS)
         self.__potion_amount_potion.configure(height=1, bg='dark goldenrod', width=15)
-        self.__potion_amount_potion.grid(row=7, column=3, sticky=N + W + E + S, columnspan=1)
+        self.__potion_amount_potion.grid(row=7, column=1, sticky=N + W + E + S, columnspan=1)
 
         self.__random_plant = Label(text="", fg="black", bg="dark olive green", height=1, width=21)
-        self.__random_effect = Label(text="", fg="black", bg="dark olive green", height=1, width=21)
-        self.__random_attribute = Label(text="", fg="black", bg="dark olive green", height=1, width=21)
+        self.__randomized_effect_attribute = Label(text="", fg="black", bg="dark olive green", height=1, width=21)
 
-        self.__random_plant.grid(row=2, column=3, columnspan=2, sticky=N + W + E + S)
-        self.__random_effect.grid(row=4, column=3, columnspan=2, sticky=N + W + E + S)
-        self.__random_attribute.grid(row=6, column=3, columnspan=2, sticky=N + W + E + S)
+        self.__random_plant.grid(row=2, column=1, columnspan=2, sticky=N + W + E + S)
+        self.__randomized_effect_attribute.grid(row=4, column=1, columnspan=2, sticky=N + W + E + S)
 
         # Choose to either show the desired bases or not
         self.__formvalue = IntVar()
@@ -74,6 +71,7 @@ class Window:
         self.__entry4 = Entry(self.__window, width=40, fg="black", bg="lemon chiffon")
         self.__entry5 = Entry(self.__window, width=40, fg="black", bg="lemon chiffon")
         self.__entry6 = Entry(self.__window, width=40, fg="black", bg="lemon chiffon")
+        self.__info_entry = Entry(self.__window, width=35, fg="black", bg="lemon chiffon")
 
         self.__entry1.grid(row=1, column=0)
         self.__entry2.grid(row=2, column=0)
@@ -81,27 +79,32 @@ class Window:
         self.__entry4.grid(row=4, column=0)
         self.__entry5.grid(row=5, column=0)
         self.__entry6.grid(row=6, column=0)
+        self.__info_entry.grid(row=6, column=1, columnspan=2)
 
         self.__defined_button = Button(self.__window, text="Create Potion", command=self.press_potion,
                                        height=1, fg="black", bg="chartreuse4")
 
         self.__effect_button = Button(self.__window, text="Random Effect", command=self.assign_random_effect,
-                                      height=1, width=42, fg="black", bg="chartreuse4")
+                                      height=1, width=20, fg="black", bg="chartreuse4")
 
         self.__attribute_button = Button(self.__window, text="Random Attribute", command=self.assign_random_attribute,
-                                         height=1, width=42, fg="black", bg="chartreuse4")
+                                         height=1, width=20, fg="black", bg="chartreuse4")
 
         self.__plant_button = Button(self.__window, text="Random Plant", command=self.assign_random_plant,
-                                     height=1, width=42, fg="black", bg="chartreuse4")
+                                     height=1, width=40, fg="black", bg="chartreuse4")
 
         self.__randomized_button = Button(self.__window, text="Random Potion", command=self.create_random_potion,
-                                          height=1, width=42, fg="black", bg="chartreuse4")
+                                          height=1, width=40, fg="black", bg="chartreuse4")
 
-        self.__defined_button.grid(row=8, column=0, sticky=N + W + E + S, columnspan=2)
-        self.__effect_button.grid(row=3, column=3, columnspan=2, sticky=N + W + E + S)
-        self.__attribute_button.grid(row=5, column=3, columnspan=2, sticky=N + W + E + S)
-        self.__plant_button.grid(row=1, column=3, columnspan=2, sticky=N + W + E + S)
-        self.__randomized_button.grid(row=8, column=3, columnspan=2, sticky=N + W + E + S)
+        self.__info_button = Button(self.__window, text="Retrieve Information", command=self.retrieve_information,
+                                    height=1, width=40, fg="black", bg="chartreuse4")
+
+        self.__defined_button.grid(row=8, column=0, sticky=N + W + E + S, columnspan=1)
+        self.__effect_button.grid(row=3, column=1, columnspan=1, sticky=N + W + E + S)
+        self.__attribute_button.grid(row=3, column=2, columnspan=1, sticky=N + W + E + S)
+        self.__plant_button.grid(row=1, column=1, columnspan=2, sticky=N + W + E + S)
+        self.__randomized_button.grid(row=8, column=1, columnspan=2, sticky=N + W + E + S)
+        self.__info_button.grid(row=5, column=1, columnspan=2, sticky=N + W + E + S)
 
         # Reads the plants.json file to generate the data structure for the plants
         # does the same with effect and attributes as well
@@ -464,8 +467,8 @@ class Window:
         if len(additional_list) > 1:
             random_value = random.randint(0, (len(additional_list) - 1))
             additional_string = " (" + str(additional_list[random_value]) + ")"
-        self.__random_attribute.configure\
-        (text=str(self.__ATTRIBUTES[random_attribute]["Attribute"]) + additional_string)
+        self.__randomized_effect_attribute.configure(text=str(self.__ATTRIBUTES[random_attribute]["Attribute"])
+                                                          + additional_string)
 
     def assign_random_effect(self):
         random_effect = random.randint(0, (len(self.__EFFECTS) - 1))
@@ -474,7 +477,8 @@ class Window:
         if len(additional_list) > 1:
             random_value = random.randint(0, (len(additional_list) - 1))
             additional_string = " (" + str(additional_list[random_value]) + ")"
-        self.__random_effect.configure(text=str(self.__EFFECTS[random_effect]["Effect"]) + additional_string)
+        self.__randomized_effect_attribute.configure(text=str(self.__EFFECTS[random_effect]["Effect"])
+                                                          + additional_string)
 
     def assign_random_plant(self):
         chosen_biome = self.__biome_variable.get()
@@ -492,6 +496,91 @@ class Window:
                 .configure(text=str(string.capwords(randomly_chosen_plant)) + ", " + str(random_portion) + " Portions")
         else:
             self.__random_plant.configure(text="No plant found with current parameters.")
+
+    def retrieve_information(self):
+        desired_plant = None
+        name = self.__info_entry.get()
+        for plant in self.__PLANTS:
+            if plant["Name"] == name:
+                desired_plant = plant
+                break
+        if desired_plant is None:
+            self.__errorlabel.configure(text="No plant found with current parameters.", bg="firebrick")
+        else:
+            new_window = Toplevel(self.__window)
+            new_window.title(string.capwords(name))
+            name = Label(new_window, text=string.capwords(desired_plant["Name"]), anchor="w", width=12,
+                         font=('Helvetica', 18, 'bold'))
+            name.grid(row=0, column=0, sticky=N + W + E + S, columnspan=2)
+
+            rarity = Label(new_window, text=desired_plant["Rarity"] + " plant", anchor="w", width=12,
+                         font=('Helvetica', 12, 'italic'))
+            rarity.grid(row=1, column=0, sticky=N + W + E + S, columnspan=2)
+
+            final_forms = Label(new_window, text="Suitable Bases: ", anchor="w", width=12,
+                         font=('Helvetica', 12, 'bold'))
+            final_forms_info = Label(new_window, text=desired_plant["Final Form"], anchor="w", width=70,
+                                font=('Helvetica', 12))
+            final_forms.grid(row=2, column=0, sticky=N + W + E + S)
+            final_forms_info.grid(row=2, column=1, sticky=N + W + E + S)
+
+            dc = Label(new_window, text="Save DC: ", anchor="w", width=12,
+                         font=('Helvetica', 12, 'bold'))
+            dc_info = Label(new_window, text=desired_plant["DC"], anchor="w", width=70,
+                                font=('Helvetica', 12))
+            dc.grid(row=3, column=0, sticky=N + W + E + S)
+            dc_info.grid(row=3, column=1, sticky=N + W + E + S)
+
+            damage = Label(new_window, text="Damage: ", anchor="w", width=12,
+                         font=('Helvetica', 12, 'bold'))
+            damage_info = Label(new_window, text=desired_plant["Damage"], anchor="w", width=70,
+                                font=('Helvetica', 12))
+            damage.grid(row=4, column=0, sticky=N + W + E + S)
+            damage_info.grid(row=4, column=1, sticky=N + W + E + S)
+
+            time = Label(new_window, text="Time: ", anchor="w", width=12,
+                         font=('Helvetica', 12, 'bold'))
+            time_info = Label(new_window, text=desired_plant["Time"], anchor="w", width=70,
+                                font=('Helvetica', 12))
+            time.grid(row=6, column=0, sticky=N + W + E + S)
+            time_info.grid(row=6, column=1, sticky=N + W + E + S)
+
+            unit = Label(new_window, text="Unit: ", anchor="w", width=12,
+                         font=('Helvetica', 12, 'bold'))
+            unit_info = Label(new_window, text=desired_plant["Unit"], anchor="w", width=70,
+                                font=('Helvetica', 12))
+            unit.grid(row=7, column=0, sticky=N + W + E + S)
+            unit_info.grid(row=7, column=1, sticky=N + W + E + S)
+
+            effects = Label(new_window, text="Effects: ", anchor="w", width=12,
+                         font=('Helvetica', 12, 'bold'))
+            effects_info = Label(new_window, text=desired_plant["Effects"], anchor="w", width=70,
+                                font=('Helvetica', 12))
+            effects.grid(row=8, column=0, sticky=N + W + E + S)
+            effects_info.grid(row=8, column=1, sticky=N + W + E + S)
+
+
+            attributes = Label(new_window, text="Attributes: ", anchor="w", width=12,
+                         font=('Helvetica', 12, 'bold'))
+            attributes_info = Label(new_window, text=desired_plant["Attributes"], anchor="w", width=70,
+                                font=('Helvetica', 12))
+            attributes.grid(row=9, column=0, sticky=N + W + E + S)
+            attributes_info.grid(row=9, column=1, sticky=N + W + E + S)
+
+            biomes = Label(new_window, text="Biomes: ", anchor="w", width=12,
+                         font=('Helvetica', 12, 'bold'))
+            biomes_info = Label(new_window, text=desired_plant["Biomes"], anchor="w", width=70,
+                                font=('Helvetica', 12))
+            biomes.grid(row=9, column=0, sticky=N + W + E + S)
+            biomes_info.grid(row=9, column=1, sticky=N + W + E + S)
+
+            # FINISH ADDING DESCRIPTIONS TO plants.json AND THE IMPLEMENT
+            description = Label(new_window, text="Description: ", anchor="w", width=12,
+                         font=('Helvetica', 12, 'bold'))
+            description_info = Label(new_window, text="Placeholder", anchor="w", width=70,
+                                font=('Helvetica', 12))
+            description.grid(row=10, column=0, sticky=N + W + E + S)
+            description_info.grid(row=10, column=1, sticky=N + W + E + S)
 
 
 def main():
