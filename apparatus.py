@@ -243,7 +243,7 @@ class Window:
         while counter < 7:
             self.clear_entry(counter)
             if len(chosen_plants) >= counter:
-                self.insert_plant(counter, chosen_plants[counter-1]["Name"])
+                self.insert_plant(counter, chosen_plants[counter - 1]["Name"])
             counter += 1
 
         self.make_potion(chosen_plants, amount_of_plants)
@@ -276,6 +276,7 @@ class Window:
         }
         entries[counter].insert(END, string.capwords(name))
         entries[counter].configure(bg="yellow green")
+        return
 
     def clear_entry(self, counter):
         entries = {
@@ -288,6 +289,7 @@ class Window:
         }
         entries[counter].delete(0, END)
         entries[counter].configure(bg="lemon chiffon")
+        return
 
     def color_entry(self, counter, plant_found):
         entries = {
@@ -304,6 +306,7 @@ class Window:
             entries[counter].configure(bg="lemon chiffon")
         else:
             entries[counter].configure(bg="firebrick")
+        return
 
     def calculate_dc(self, plantlist, dc):
         if len(plantlist) != 0:
@@ -322,12 +325,12 @@ class Window:
             if len(damage_listed) == 1:
                 valuedict[plant["Damage"]] = 0
             elif len(damage_listed) == 3:
-                valuedict[plant["Damage"]] = float(damage_listed[0])*(int(damage_listed[2])/2+0.5)
+                valuedict[plant["Damage"]] = float(damage_listed[0]) * (int(damage_listed[2]) / 2 + 0.5)
                 if largest_die < int(damage_listed[2]):
                     largest_die = int(damage_listed[2])
             else:
                 die = str(damage_listed[2]) + str(damage_listed[3])
-                valuedict[plant["Damage"]] = float(damage_listed[0]) * (int(die)/2+0.5)
+                valuedict[plant["Damage"]] = float(damage_listed[0]) * (int(die) / 2 + 0.5)
                 if largest_die < int(die):
                     largest_die = int(die)
         self.__dc_calc["Die"] = largest_die
@@ -486,13 +489,13 @@ class Window:
         plants_in_biome = []
         for plant in self.__PLANTS:
             if (plant["Biomes"].split(", ").count(chosen_biome) > 0
-                or plant["Biomes"].split(", ").count("All") > 0 or chosen_biome == "All")\
+                or plant["Biomes"].split(", ").count("All") > 0 or chosen_biome == "All") \
                     and (plant["Rarity"] == chosen_rarity):
                 plants_in_biome.append(plant["Name"])
         if len(plants_in_biome) > 0:
             randomly_chosen_plant = plants_in_biome[random.randint(0, (len(plants_in_biome) - 1))]
             random_portion = random.choices(PORTIONS, weights=(10, 6, 3, 1), k=1)
-            self.__random_plant\
+            self.__random_plant \
                 .configure(text=str(string.capwords(randomly_chosen_plant)) + ", " + str(random_portion) + " Portions")
         else:
             self.__random_plant.configure(text="No plant found with current parameters.")
@@ -509,78 +512,29 @@ class Window:
         else:
             new_window = Toplevel(self.__window)
             new_window.title(string.capwords(name))
-            name = Label(new_window, text=string.capwords(desired_plant["Name"]), anchor="w", width=12,
-                         font=('Helvetica', 18, 'bold'))
+
+            name = Label(new_window, text=string.capwords(desired_plant["Name"]), bg="pale goldenrod", anchor="w",
+                         width=12, font=('Helvetica', 18, 'bold'))
             name.grid(row=0, column=0, sticky=N + W + E + S, columnspan=2)
 
-            rarity = Label(new_window, text=desired_plant["Rarity"] + " plant", anchor="w", width=12,
-                         font=('Helvetica', 12, 'italic'))
+            rarity = Label(new_window, text=desired_plant["Rarity"] + " plant", bg="pale goldenrod", anchor="w",
+                           width=12, font=('Helvetica', 10, 'italic'))
             rarity.grid(row=1, column=0, sticky=N + W + E + S, columnspan=2)
 
-            final_forms = Label(new_window, text="Suitable Bases: ", anchor="w", width=12,
-                         font=('Helvetica', 12, 'bold'))
-            final_forms_info = Label(new_window, text=desired_plant["Final Form"], anchor="w", width=70,
-                                font=('Helvetica', 12))
-            final_forms.grid(row=2, column=0, sticky=N + W + E + S)
-            final_forms_info.grid(row=2, column=1, sticky=N + W + E + S)
+            i = 0
 
-            dc = Label(new_window, text="Save DC: ", anchor="w", width=12,
-                         font=('Helvetica', 12, 'bold'))
-            dc_info = Label(new_window, text=desired_plant["DC"], anchor="w", width=70,
-                                font=('Helvetica', 12))
-            dc.grid(row=3, column=0, sticky=N + W + E + S)
-            dc_info.grid(row=3, column=1, sticky=N + W + E + S)
+            formatlist = [["Suitable Bases: ", "Final Form"], ["Save DC: ", "DC"], ["Damage:", "Damage"],
+                          ["Time: ", "Time"], ["Unit: ", "Unit"], ["Effects: ", "Effects"],
+                          ["Attributes: ", "Attributes"], ["Biomes: ", "Biomes"]]
 
-            damage = Label(new_window, text="Damage: ", anchor="w", width=12,
-                         font=('Helvetica', 12, 'bold'))
-            damage_info = Label(new_window, text=desired_plant["Damage"], anchor="w", width=70,
-                                font=('Helvetica', 12))
-            damage.grid(row=4, column=0, sticky=N + W + E + S)
-            damage_info.grid(row=4, column=1, sticky=N + W + E + S)
-
-            time = Label(new_window, text="Time: ", anchor="w", width=12,
-                         font=('Helvetica', 12, 'bold'))
-            time_info = Label(new_window, text=desired_plant["Time"], anchor="w", width=70,
-                                font=('Helvetica', 12))
-            time.grid(row=6, column=0, sticky=N + W + E + S)
-            time_info.grid(row=6, column=1, sticky=N + W + E + S)
-
-            unit = Label(new_window, text="Unit: ", anchor="w", width=12,
-                         font=('Helvetica', 12, 'bold'))
-            unit_info = Label(new_window, text=desired_plant["Unit"], anchor="w", width=70,
-                                font=('Helvetica', 12))
-            unit.grid(row=7, column=0, sticky=N + W + E + S)
-            unit_info.grid(row=7, column=1, sticky=N + W + E + S)
-
-            effects = Label(new_window, text="Effects: ", anchor="w", width=12,
-                         font=('Helvetica', 12, 'bold'))
-            effects_info = Label(new_window, text=desired_plant["Effects"], anchor="w", width=70,
-                                font=('Helvetica', 12))
-            effects.grid(row=8, column=0, sticky=N + W + E + S)
-            effects_info.grid(row=8, column=1, sticky=N + W + E + S)
-
-
-            attributes = Label(new_window, text="Attributes: ", anchor="w", width=12,
-                         font=('Helvetica', 12, 'bold'))
-            attributes_info = Label(new_window, text=desired_plant["Attributes"], anchor="w", width=70,
-                                font=('Helvetica', 12))
-            attributes.grid(row=9, column=0, sticky=N + W + E + S)
-            attributes_info.grid(row=9, column=1, sticky=N + W + E + S)
-
-            biomes = Label(new_window, text="Biomes: ", anchor="w", width=12,
-                         font=('Helvetica', 12, 'bold'))
-            biomes_info = Label(new_window, text=desired_plant["Biomes"], anchor="w", width=70,
-                                font=('Helvetica', 12))
-            biomes.grid(row=9, column=0, sticky=N + W + E + S)
-            biomes_info.grid(row=9, column=1, sticky=N + W + E + S)
-
-            # FINISH ADDING DESCRIPTIONS TO plants.json AND THE IMPLEMENT
-            description = Label(new_window, text="Description: ", anchor="w", width=12,
-                         font=('Helvetica', 12, 'bold'))
-            description_info = Label(new_window, text="Placeholder", anchor="w", width=70,
-                                font=('Helvetica', 12))
-            description.grid(row=10, column=0, sticky=N + W + E + S)
-            description_info.grid(row=10, column=1, sticky=N + W + E + S)
+            while i < 8:
+                current_label = Label(new_window, text=formatlist[i][0], bg="pale goldenrod", anchor="w", width=12,
+                                      font=('Helvetica', 12, 'bold'))
+                current_label_info = Label(new_window, text=desired_plant[formatlist[i][1]], bg="pale goldenrod",
+                                           anchor="w", width=70, font=('Helvetica', 12))
+                current_label.grid(row=i+2, column=0, sticky=N + W + E + S)
+                current_label_info.grid(row=i+2, column=1, sticky=N + W + E + S)
+                i = i + 1
 
 
 def main():
