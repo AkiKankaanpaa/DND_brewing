@@ -2,15 +2,9 @@ from tkinter import *
 import random
 import json
 import string
+import csv
 
 # Used to determine the time units
-TIME_UNITS = {"0": 0, "Rounds": 1, "Minutes": 2, "Hours": 3, "Days": 4, "Weeks": 5, "Months": 6, "Infinite": 7}
-BIOMES = ["All", "Arctic", "Coastal", "Deserts", "Forests", "Hills", "Jungles", "Lakes",
-          "Plains", "Ocean", "Swamps", "Volcanic"]
-RARITIES = ["Common", "Uncommon", "Rare", "Very Rare", "Myth"]
-BASE_FORMS = ["Liquid", "Solid", "Powder", "Gas", "Paste"]
-AMOUNTS = [2, 3, 4, 5]
-PORTIONS = [1, 2, 3, 4]
 
 
 class Window:
@@ -22,41 +16,75 @@ class Window:
         # Used in calculation of the final crafting DC
         self.__dc_calc = {"Die": 0, "Plant Amount": 0, "Attribute Amount": 0, "Effect Amount": 0}
 
+        with open("plants.json", "r") as plant_json:
+            self.__PLANTS = json.load(plant_json)
+
+        with open("effects.json", "r") as effect_json:
+            self.__EFFECTS = json.load(effect_json)
+
+        with open("attributes.json", "r") as attribute_json:
+            self.__ATTRIBUTES = json.load(attribute_json)
+
+        with open("timeunits.json", "r") as timeunit_json:
+            timeunits = json.load(timeunit_json)
+
+        self.__TIMEUNITS = {}
+        for index in timeunits[0]:
+            self.__TIMEUNITS[index] = timeunits[0][index]
+
+        self.__biomes = []
+        self.__rarities = []
+        self.__baseforms = []
+        self.__amounts = []
+        self.__portions = []
+
+        readable_data = [self.__biomes, self.__rarities, self.__baseforms, self.__amounts, self.__portions]
+
+        row_counter = 0
+        with open("basevalues.txt") as csv_file:
+            csv_reader = csv.reader(csv_file, delimiter=',')
+            for row in csv_reader:
+                for value in row:
+                    readable_data[row_counter].append(value)
+                row_counter += 1
+
         # Information labels for the created potion
 
-        self.__errorlabel = Message(text="", fg="black", bg="dark goldenrod", aspect=1500, justify=CENTER)
-
+        self.__errorlabel = Label(text="", fg="black", bg="dark goldenrod")
         self.__errorlabel.grid(row=7, column=0, sticky=N + W + E + S)
+
+        self.__enterlabel = Label(text="Please enter the plants below.", fg="black", bg="dark goldenrod")
+        self.__enterlabel.grid(row=0, column=0, sticky=N + W + E + S)
 
         # Used for assigning random plants
         self.__biome_variable = StringVar()
-        self.__biome_variable.set(BIOMES[0])
-        self.__biome_option = OptionMenu(self.__window, self.__biome_variable, *BIOMES)
+        self.__biome_variable.set(str(self.__biomes[0]))
+        self.__biome_option = OptionMenu(self.__window, self.__biome_variable, *self.__biomes)
         self.__biome_option.configure(height=1, bg='dark goldenrod', width=24)
         self.__biome_option.grid(row=0, column=1, sticky=N + W + E + S, columnspan=3)
 
         self.__rarity_variable = StringVar()
-        self.__rarity_variable.set(RARITIES[0])
-        self.__rarity_option = OptionMenu(self.__window, self.__rarity_variable, *RARITIES)
+        self.__rarity_variable.set(self.__rarities[0])
+        self.__rarity_option = OptionMenu(self.__window, self.__rarity_variable, *self.__rarities)
         self.__rarity_option.configure(height=1, bg='dark goldenrod', width=24)
         self.__rarity_option.grid(row=0, column=4, sticky=N + W + E + S, columnspan=3)
 
         # Used for creating random potions
         self.__potion_rarity_variable = StringVar()
-        self.__potion_rarity_variable.set(RARITIES[0])
-        self.__potion_rarity_option = OptionMenu(self.__window, self.__potion_rarity_variable, *RARITIES)
+        self.__potion_rarity_variable.set(self.__rarities[0])
+        self.__potion_rarity_option = OptionMenu(self.__window, self.__potion_rarity_variable, *self.__rarities)
         self.__potion_rarity_option.configure(height=1, bg='dark goldenrod',)
         self.__potion_rarity_option.grid(row=7, column=1, sticky=N + W + E + S, columnspan=2)
 
         self.__potion_base_variable = StringVar()
-        self.__potion_base_variable.set(BASE_FORMS[0])
-        self.__potion_base_option = OptionMenu(self.__window, self.__potion_base_variable, *BASE_FORMS)
+        self.__potion_base_variable.set(self.__baseforms[0])
+        self.__potion_base_option = OptionMenu(self.__window, self.__potion_base_variable, *self.__baseforms)
         self.__potion_base_option.configure(height=1, bg='dark goldenrod')
         self.__potion_base_option.grid(row=7, column=3, sticky=N + W + E + S, columnspan=2)
 
         self.__potion_amount_variable = StringVar()
-        self.__potion_amount_variable.set(AMOUNTS[0])
-        self.__potion_amount_option = OptionMenu(self.__window, self.__potion_amount_variable, *AMOUNTS)
+        self.__potion_amount_variable.set(self.__amounts[0])
+        self.__potion_amount_option = OptionMenu(self.__window, self.__potion_amount_variable, *self.__amounts)
         self.__potion_amount_option.configure(height=1, bg='dark goldenrod')
         self.__potion_amount_option.grid(row=7, column=5, sticky=N + W + E + S, columnspan=2)
 
@@ -67,10 +95,6 @@ class Window:
         self.__randomized_effect_attribute.grid(row=4, column=1, columnspan=6, sticky=N + W + E + S)
 
         # Choose to either show the desired bases or not
-        self.__formvalue = IntVar()
-        self.__formcheck = Checkbutton(text="Show Suitable Bases", bg='dark goldenrod',
-                                       variable=self.__formvalue, onvalue=1, offvalue=0)
-        self.__formcheck.grid(column=0, row=0, sticky=W)
 
         # Entry-windows for the user to enter the plant names
         self.__entry1 = Entry(self.__window, width=40, fg="black", bg="lemon chiffon")
@@ -79,6 +103,7 @@ class Window:
         self.__entry4 = Entry(self.__window, width=40, fg="black", bg="lemon chiffon")
         self.__entry5 = Entry(self.__window, width=40, fg="black", bg="lemon chiffon")
         self.__entry6 = Entry(self.__window, width=40, fg="black", bg="lemon chiffon")
+        
         self.__info_entry = Entry(self.__window, width=40, fg="black", bg="lemon chiffon")
 
         self.__entry1.grid(row=1, column=0)
@@ -116,15 +141,6 @@ class Window:
 
         # Reads the plants.json file to generate the data structure for the plants
         # does the same with effect and attributes as well
-        with open("plants.json", "r") as plant_json:
-            plants = json.load(plant_json)
-        self.__PLANTS = plants
-
-        with open("effects.json", "r") as effect_json:
-            self.__EFFECTS = json.load(effect_json)
-
-        with open("attributes.json", "r") as attribute_json:
-            self.__ATTRIBUTES = json.load(attribute_json)
 
     def press_potion(self):
         namelist = []
@@ -208,19 +224,16 @@ class Window:
         attributes.grid(row=5, column=1, sticky=N + W + E + S)
         crafting_dc.grid(row=6, column=1, sticky=N + W + E + S)
 
-        self.calculate_dc(plantlist, dc)
+        calculate_dc(plantlist, dc)
         self.calculate_damage(plantlist, damage)
         self.calculate_time(plantlist, time)
         self.determine_effects(plantlist, effects)
         self.determine_attributes(plantlist, attributes)
+        determine_form(plantlist, form)
 
         self.__dc_calc["Plant Amount"] = plant_amount
         self.calculate_final_dc(crafting_dc)
 
-        if self.__formvalue.get() == 1:
-            self.determine_form(plantlist, form)
-        else:
-            form.configure(text="")
 
     def make_potion_error(self):
         self.__errorlabel.configure(text="Unrecognized Ingredients.",
@@ -229,12 +242,12 @@ class Window:
     def create_random_potion(self):
         chosen_plants = []
         allowed_plants = []
-        max_rarity = self.transform_rarity(self.__potion_rarity_variable.get())
+        max_rarity = transform_rarity(self.__potion_rarity_variable.get())
         amount_of_plants = int(self.__potion_amount_variable.get())
         chosen_base = self.__potion_base_variable.get()
 
         for plant in self.__PLANTS:
-            if (RARITIES.index(plant["Rarity"]) <= max_rarity) and (chosen_base in plant["Final Form"]):
+            if (self.__rarities.index(plant["Rarity"]) <= max_rarity) and (chosen_base in plant["Final Form"]):
                 allowed_plants.append(plant)
 
         current_amount_of_plants = 1
@@ -256,16 +269,6 @@ class Window:
                 entry_counter += 1
 
             self.make_potion(chosen_plants, amount_of_plants)
-
-    def transform_rarity(self, rarity):
-        rarities = {
-            "Common": 1,
-            "Uncommon": 2,
-            "Rare": 3,
-            "Very Rare": 4,
-            "Myth": 5,
-        }
-        return rarities.get(rarity)
 
     def insert_plant(self, counter, name):
         entries = {
@@ -310,14 +313,6 @@ class Window:
             entries[counter].configure(bg="firebrick")
         return
 
-    def calculate_dc(self, plantlist, dc):
-        if len(plantlist) != 0:
-            max_dc = 0
-            for plant in plantlist:
-                if int(plant["DC"]) > int(max_dc):
-                    max_dc = int(plant["DC"])
-            dc.configure(text="Save DC: " + str(max_dc))
-
     def calculate_damage(self, plantlist, damage):
         valuedict = {}
         largest_die = 0
@@ -349,7 +344,7 @@ class Window:
                 current_best[0] = current[0]
                 current_best[1] = current[1]
             elif checker == 2:
-                if self.check_die(current[0], current_best[0]):
+                if check_die(current[0], current_best[0]):
                     current_best[0] = current[0]
                     current_best[1] = current[1]
         if current_best[1] == "Infinite":
@@ -360,36 +355,12 @@ class Window:
             time.configure(text="Duration: " + current_best[0] + " " + current_best[1])
 
     def check_unit(self, current, best):
-        if TIME_UNITS[current] > TIME_UNITS[best]:
+        if self.__TIMEUNITS[current] > self.__TIMEUNITS[best]:
             return 1
-        elif TIME_UNITS[current] == TIME_UNITS[best]:
+        elif int(self.__TIMEUNITS[current]) == int(self.__TIMEUNITS[best]):
             return 2
         else:
             return 3
-
-    def check_die(self, current, best):
-        current_split = list(current)
-        best_listed = list(best)
-        if len(current_split) <= 2:
-            current = float(current)
-        elif len(current_split) == 3:
-            current = float(current_split[0]) * float(int(current_split[2]) / 2 + 0.5)
-        else:
-            die = str(current_split[2]) + str(current_split[3])
-            current = float(current_split[0]) * (int(die) / 2 + 0.5)
-
-        if len(best_listed) <= 2:
-            best = float(best)
-        elif len(best_listed) == 3:
-            best = float(best_listed[0]) * (int(best_listed[2]) / 2 + 0.5)
-        else:
-            die = str(best_listed[2]) + str(best_listed[3])
-            best = float(best_listed[0]) * (int(die) / 2 + 0.5)
-
-        if current > best:
-            return True
-        else:
-            return False
 
     def determine_effects(self, plantlist, effect_con):
         effects = []
@@ -425,31 +396,6 @@ class Window:
             i = i + 1
         self.__dc_calc["Attribute Amount"] = len(attributes)
         attribute_con.configure(text="Attributes, " + str(len(attributes)) + " in total: " + attributestring)
-
-    def determine_form(self, plantlist, form_con):
-        forms = []
-        unique_forms = []
-        final_forms = []
-        formstring = ""
-        for plant in plantlist:
-            for form in plant["Final Form"].split(", "):
-                forms.append(form)
-        for value in forms:
-            if value not in unique_forms:
-                unique_forms.append(value)
-        for unique_value in unique_forms:
-            if forms.count(unique_value) == len(plantlist):
-                final_forms.append(unique_value)
-        i = 1
-        for form in final_forms:
-            formstring += form
-            if i < len(final_forms):
-                formstring += ", "
-            i = i + 1
-        if len(final_forms) != 0:
-            form_con.configure(text="Suitable Bases: " + formstring)
-        else:
-            form_con.configure(text="The chosen plants are not compatible with each other.")
 
     def calculate_final_dc(self, dc_con):
         if self.__dc_calc["Plant Amount"] > 3:
@@ -496,7 +442,7 @@ class Window:
                 plants_in_biome.append(plant["Name"])
         if len(plants_in_biome) > 0:
             randomly_chosen_plant = plants_in_biome[random.randint(0, (len(plants_in_biome) - 1))]
-            random_portion = random.choices(PORTIONS, weights=(10, 6, 3, 1), k=1)
+            random_portion = random.choices(self.__portions, weights=(10, 6, 3, 1), k=1)
             self.__random_plant \
                 .configure(text=str(string.capwords(randomly_chosen_plant)) + ", " + str(random_portion) + " Portions")
         else:
@@ -537,6 +483,77 @@ class Window:
                 current_label.grid(row=i+2, column=0, sticky=N + W + E + S)
                 current_label_info.grid(row=i+2, column=1, sticky=N + W + E + S)
                 i = i + 1
+
+
+def check_die(current, best):
+    current_split = list(current)
+    best_listed = list(best)
+    if len(current_split) <= 2:
+        current = float(current)
+    elif len(current_split) == 3:
+        current = float(current_split[0]) * float(int(current_split[2]) / 2 + 0.5)
+    else:
+        die = str(current_split[2]) + str(current_split[3])
+        current = float(current_split[0]) * (int(die) / 2 + 0.5)
+
+    if len(best_listed) <= 2:
+        best = float(best)
+    elif len(best_listed) == 3:
+        best = float(best_listed[0]) * (int(best_listed[2]) / 2 + 0.5)
+    else:
+        die = str(best_listed[2]) + str(best_listed[3])
+        best = float(best_listed[0]) * (int(die) / 2 + 0.5)
+
+    if current > best:
+        return True
+    else:
+        return False
+
+
+def transform_rarity(rarity):
+    rarities = {
+        "Common": 1,
+        "Uncommon": 2,
+        "Rare": 3,
+        "Very Rare": 4,
+        "Myth": 5,
+    }
+    return rarities.get(rarity)
+
+
+def calculate_dc(plantlist, dc):
+    if len(plantlist) != 0:
+        max_dc = 0
+        for plant in plantlist:
+            if int(plant["DC"]) > int(max_dc):
+                max_dc = int(plant["DC"])
+        dc.configure(text="Save DC: " + str(max_dc))
+
+
+def determine_form(plantlist, form_con):
+    forms = []
+    unique_forms = []
+    final_forms = []
+    formstring = ""
+    for plant in plantlist:
+        for form in plant["Final Form"].split(", "):
+            forms.append(form)
+    for value in forms:
+        if value not in unique_forms:
+            unique_forms.append(value)
+    for unique_value in unique_forms:
+        if forms.count(unique_value) == len(plantlist):
+            final_forms.append(unique_value)
+    i = 1
+    for form in final_forms:
+        formstring += form
+        if i < len(final_forms):
+            formstring += ", "
+        i = i + 1
+    if len(final_forms) != 0:
+        form_con.configure(text="Suitable Bases: " + formstring)
+    else:
+        form_con.configure(text="The chosen plants are not compatible with each other.")
 
 
 def main():
