@@ -11,7 +11,7 @@ class Window:
     def __init__(self):
         self.__window = Tk()
         self.__window.title("Brewing Apparatus")
-        self.__window.configure(bg='dark goldenrod')
+        self.__window.configure(bg='PaleVioletRed4')
 
         # Used in calculation of the final crafting DC
         self.__dc_calc = {"Die": 0, "Plant Amount": 0, "Attribute Amount": 0, "Effect Amount": 0}
@@ -50,46 +50,46 @@ class Window:
 
         # Information labels for the created potion
 
-        self.__errorlabel = Label(text="", fg="black", bg="dark goldenrod")
+        self.__errorlabel = Label(text="", fg="black", bg="PaleVioletRed4")
         self.__errorlabel.grid(row=7, column=0, sticky=N + W + E + S)
 
-        self.__enterlabel = Label(text="Please enter the plants below.", fg="black", bg="dark goldenrod")
+        self.__enterlabel = Label(text="Please enter the plants below.", fg="black", bg="PaleVioletRed4")
         self.__enterlabel.grid(row=0, column=0, sticky=N + W + E + S)
 
         # Used for assigning random plants
         self.__biome_variable = StringVar()
         self.__biome_variable.set(str(self.__biomes[0]))
         self.__biome_option = OptionMenu(self.__window, self.__biome_variable, *self.__biomes)
-        self.__biome_option.configure(height=1, bg='dark goldenrod', width=24)
+        self.__biome_option.configure(height=1, bg='PaleVioletRed4', width=24)
         self.__biome_option.grid(row=0, column=1, sticky=N + W + E + S, columnspan=3)
 
         self.__rarity_variable = StringVar()
         self.__rarity_variable.set(self.__rarities[0])
         self.__rarity_option = OptionMenu(self.__window, self.__rarity_variable, *self.__rarities)
-        self.__rarity_option.configure(height=1, bg='dark goldenrod', width=24)
+        self.__rarity_option.configure(height=1, bg='PaleVioletRed4', width=24)
         self.__rarity_option.grid(row=0, column=4, sticky=N + W + E + S, columnspan=3)
 
         # Used for creating random potions
         self.__potion_rarity_variable = StringVar()
         self.__potion_rarity_variable.set(self.__rarities[0])
         self.__potion_rarity_option = OptionMenu(self.__window, self.__potion_rarity_variable, *self.__rarities)
-        self.__potion_rarity_option.configure(height=1, bg='dark goldenrod',)
+        self.__potion_rarity_option.configure(height=1, bg='PaleVioletRed4')
         self.__potion_rarity_option.grid(row=7, column=1, sticky=N + W + E + S, columnspan=2)
 
         self.__potion_base_variable = StringVar()
         self.__potion_base_variable.set(self.__baseforms[0])
         self.__potion_base_option = OptionMenu(self.__window, self.__potion_base_variable, *self.__baseforms)
-        self.__potion_base_option.configure(height=1, bg='dark goldenrod')
+        self.__potion_base_option.configure(height=1, bg='PaleVioletRed4')
         self.__potion_base_option.grid(row=7, column=3, sticky=N + W + E + S, columnspan=2)
 
         self.__potion_amount_variable = StringVar()
         self.__potion_amount_variable.set(self.__amounts[0])
         self.__potion_amount_option = OptionMenu(self.__window, self.__potion_amount_variable, *self.__amounts)
-        self.__potion_amount_option.configure(height=1, bg='dark goldenrod')
+        self.__potion_amount_option.configure(height=1, bg='PaleVioletRed4')
         self.__potion_amount_option.grid(row=7, column=5, sticky=N + W + E + S, columnspan=2)
 
-        self.__random_plant = Label(text="", fg="black", bg="dark olive green", height=1)
-        self.__randomized_effect_attribute = Label(text="", fg="black", bg="dark olive green", height=1)
+        self.__random_plant = Label(text="", fg="black", bg="lavender", height=1)
+        self.__randomized_effect_attribute = Label(text="", fg="black", bg="lavender", height=1)
 
         self.__random_plant.grid(row=2, column=1, columnspan=6, sticky=N + W + E + S)
         self.__randomized_effect_attribute.grid(row=4, column=1, columnspan=6, sticky=N + W + E + S)
@@ -97,14 +97,14 @@ class Window:
         # Choose to either show the desired bases or not
 
         # Entry-windows for the user to enter the plant names
-        self.__entry1 = Entry(self.__window, width=40, fg="black", bg="lemon chiffon")
-        self.__entry2 = Entry(self.__window, width=40, fg="black", bg="lemon chiffon")
-        self.__entry3 = Entry(self.__window, width=40, fg="black", bg="lemon chiffon")
-        self.__entry4 = Entry(self.__window, width=40, fg="black", bg="lemon chiffon")
-        self.__entry5 = Entry(self.__window, width=40, fg="black", bg="lemon chiffon")
-        self.__entry6 = Entry(self.__window, width=40, fg="black", bg="lemon chiffon")
+        self.__entry1 = Entry(self.__window, width=40, fg="black", bg="lavender")
+        self.__entry2 = Entry(self.__window, width=40, fg="black", bg="lavender")
+        self.__entry3 = Entry(self.__window, width=40, fg="black", bg="lavender")
+        self.__entry4 = Entry(self.__window, width=40, fg="black", bg="lavender")
+        self.__entry5 = Entry(self.__window, width=40, fg="black", bg="lavender")
+        self.__entry6 = Entry(self.__window, width=40, fg="black", bg="lavender")
         
-        self.__info_entry = Entry(self.__window, width=40, fg="black", bg="lemon chiffon")
+        self.__info_entry = Entry(self.__window, width=40, fg="black", bg="lavender")
 
         self.__entry1.grid(row=1, column=0)
         self.__entry2.grid(row=2, column=0)
@@ -115,22 +115,22 @@ class Window:
         self.__info_entry.grid(row=6, column=1, columnspan=6)
 
         self.__defined_button = Button(self.__window, text="Create Potion", command=self.press_potion,
-                                       height=1, fg="black", bg="chartreuse4")
+                                       height=1, fg="black", bg="slate gray")
 
         self.__effect_button = Button(self.__window, text="Random Effect", command=self.assign_random_effect,
-                                      height=1, fg="black", bg="chartreuse4")
+                                      height=1, fg="black", bg="slate gray")
 
         self.__attribute_button = Button(self.__window, text="Random Attribute", command=self.assign_random_attribute,
-                                         height=1, fg="black", bg="chartreuse4")
+                                         height=1, fg="black", bg="slate gray")
 
         self.__plant_button = Button(self.__window, text="Random Plant", command=self.assign_random_plant,
-                                     height=1, fg="black", bg="chartreuse4")
+                                     height=1, fg="black", bg="slate gray")
 
         self.__randomized_button = Button(self.__window, text="Random Potion", command=self.create_random_potion,
-                                          height=1, fg="black", bg="chartreuse4")
+                                          height=1, fg="black", bg="slate gray")
 
         self.__info_button = Button(self.__window, text="Retrieve Information", command=self.retrieve_information,
-                                    height=1, fg="black", bg="chartreuse4")
+                                    height=1, fg="black", bg="slate gray")
 
         self.__defined_button.grid(row=8, column=0, columnspan=1, sticky=N + W + E + S)
         self.__effect_button.grid(row=3, column=1, columnspan=3, sticky=N + W + E + S)
@@ -203,18 +203,18 @@ class Window:
 
     def make_potion(self, plantlist, plant_amount):
         self.__errorlabel.configure(text="",
-                                    fg="black", bg="dark goldenrod")
+                                    fg="black", bg="PaleVioletRed4")
         new_window = Toplevel(self.__window)
 
         new_window.title("Finished Potion")
 
-        form = Label(new_window, text="", fg="black", bg="olive drab", width=70)
-        damage = Message(new_window, text="", fg="black", bg="dark olive green", aspect=1500, justify=CENTER)
-        dc = Message(new_window, text="", fg="black", bg="olive drab", aspect=1500, justify=CENTER)
-        time = Message(new_window, text="", fg="black", bg="dark olive green", aspect=1500, justify=CENTER)
-        effects = Message(new_window, text="", fg="black", bg="olive drab", aspect=1500, justify=CENTER)
-        attributes = Message(new_window, text="", fg="black", bg="dark olive green", aspect=1500, justify=CENTER)
-        crafting_dc = Message(new_window, text="", fg="black", bg="olive drab", aspect=1500, justify=CENTER)
+        form = Label(new_window, text="", fg="black", bg="lavender", width=70)
+        damage = Message(new_window, text="", fg="black", bg="lavender", aspect=1500, justify=CENTER)
+        dc = Message(new_window, text="", fg="black", bg="lavender", aspect=1500, justify=CENTER)
+        time = Message(new_window, text="", fg="black", bg="lavender", aspect=1500, justify=CENTER)
+        effects = Message(new_window, text="", fg="black", bg="lavender", aspect=1500, justify=CENTER)
+        attributes = Message(new_window, text="", fg="black", bg="lavender", aspect=1500, justify=CENTER)
+        crafting_dc = Message(new_window, text="", fg="black", bg="lavender", aspect=1500, justify=CENTER)
 
         form.grid(row=0, column=1, sticky=N + W + E + S)
         damage.grid(row=1, column=1, sticky=N + W + E + S)
@@ -234,10 +234,9 @@ class Window:
         self.__dc_calc["Plant Amount"] = plant_amount
         self.calculate_final_dc(crafting_dc)
 
-
     def make_potion_error(self):
         self.__errorlabel.configure(text="Unrecognized Ingredients.",
-                                    fg="black", bg="firebrick")
+                                    fg="black", bg="firebrick4")
 
     def create_random_potion(self):
         chosen_plants = []
@@ -253,7 +252,7 @@ class Window:
         current_amount_of_plants = 1
 
         if len(allowed_plants) < amount_of_plants:
-            self.__errorlabel.configure(text="Cannot create potion with parameters.", bg="firebrick")
+            self.__errorlabel.configure(text="Cannot create potion with parameters.", bg="firebrick4")
         else:
             while current_amount_of_plants <= amount_of_plants:
                 random_choice = random.randint(0, (len(allowed_plants) - 1))
@@ -280,7 +279,7 @@ class Window:
             6: self.__entry6,
         }
         entries[counter].insert(END, string.capwords(name))
-        entries[counter].configure(bg="yellow green")
+        entries[counter].configure(bg="lavender")
         return
 
     def clear_entry(self, counter):
@@ -293,7 +292,7 @@ class Window:
             6: self.__entry6,
         }
         entries[counter].delete(0, END)
-        entries[counter].configure(bg="lemon chiffon")
+        entries[counter].configure(bg="lavender")
         return
 
     def color_entry(self, counter, plant_found):
@@ -306,11 +305,11 @@ class Window:
             6: self.__entry6,
         }
         if plant_found == 1:
-            entries[counter].configure(bg="green yellow")
+            entries[counter].configure(bg="lavender")
         elif plant_found == 2:
-            entries[counter].configure(bg="lemon chiffon")
+            entries[counter].configure(bg="lavender")
         else:
-            entries[counter].configure(bg="firebrick")
+            entries[counter].configure(bg="firebrick4")
         return
 
     def calculate_damage(self, plantlist, damage):
@@ -456,16 +455,16 @@ class Window:
                 desired_plant = plant
                 break
         if desired_plant is None:
-            self.__errorlabel.configure(text="No plant found with current parameters.", bg="firebrick")
+            self.__errorlabel.configure(text="No plant found with current parameters.", bg="firebrick4")
         else:
             new_window = Toplevel(self.__window)
             new_window.title(string.capwords(name))
 
-            name = Label(new_window, text=string.capwords(desired_plant["Name"]), bg="pale goldenrod", anchor="w",
+            name = Label(new_window, text=string.capwords(desired_plant["Name"]), bg="lavender", anchor="w",
                          width=12, font=('Helvetica', 18, 'bold'))
             name.grid(row=0, column=0, sticky=N + W + E + S, columnspan=2)
 
-            rarity = Label(new_window, text=desired_plant["Rarity"] + " plant", bg="pale goldenrod", anchor="w",
+            rarity = Label(new_window, text=desired_plant["Rarity"] + " plant", bg="lavender", anchor="w",
                            width=12, font=('Helvetica', 10, 'italic'))
             rarity.grid(row=1, column=0, sticky=N + W + E + S, columnspan=2)
 
@@ -476,9 +475,9 @@ class Window:
                           ["Attributes: ", "Attributes"], ["Biomes: ", "Biomes"]]
 
             while i < 8:
-                current_label = Label(new_window, text=formatlist[i][0], bg="pale goldenrod", anchor="w", width=12,
+                current_label = Label(new_window, text=formatlist[i][0], bg="lavender", anchor="w", width=12,
                                       font=('Helvetica', 12, 'bold'))
-                current_label_info = Label(new_window, text=desired_plant[formatlist[i][1]], bg="pale goldenrod",
+                current_label_info = Label(new_window, text=desired_plant[formatlist[i][1]], bg="lavender",
                                            anchor="w", width=70, font=('Helvetica', 12))
                 current_label.grid(row=i+2, column=0, sticky=N + W + E + S)
                 current_label_info.grid(row=i+2, column=1, sticky=N + W + E + S)
