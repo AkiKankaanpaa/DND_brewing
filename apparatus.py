@@ -4,8 +4,6 @@ import json
 import string
 import csv
 
-# Used to determine the time units
-
 
 class Window:
     def __init__(self):
@@ -184,6 +182,7 @@ class Window:
         for name in namelist:
             plant_has_not_been_found = True
             for plant in self.__PLANTS:
+                print(plant)
                 if plant["Name"] == name:
                     plantlist.append(plant)
                     self.color_entry(counter, 1)
